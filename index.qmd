@@ -51,7 +51,7 @@ Here the analysis of the playlist will be shown.
 
 ### Track Example
 
-::: {.card title="Key and Chord Analysis"}
+::: {.card title="Key and Chord Analysis - hw week 10"}
 ```{r child="analysis_of_keys.Rmd", echo=TRUE, results='asis'}
 ```
 :::
