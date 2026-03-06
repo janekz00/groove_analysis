@@ -8,6 +8,17 @@ editor: visual
 
 # Welcome
 
+## Project
+
+### About the Repository
+
+::: {.card title="About this project"}
+this is the transformed README file:
+
+This repository was created for the course **Computational Musicology** at the University of Amsterdam.\
+It contains an analysis of a selected corpus of music from my playlist *"I Don't Want This Groove to Ever End"*.
+:::
+
 ### Introduction
 
 ::: {.card title="Introduction"}
@@ -33,5 +44,14 @@ Here the analysis of the playlist will be shown.
 ::: {.card title="Example Code"}
 ```{r}
 1 + 1
+```
+:::
+
+## Musical Analysis
+
+### Track Example
+
+::: {.card title="Key and Chord Analysis"}
+```{include=analysis_of_keys.rmd}
 ```
 :::
