@@ -1,30 +1,37 @@
 ---
 title: "groove_analysis"
 author: "Janek Z"
-format: 
-  dashboard:
-    orientation: columns
+format: dashboard
 theme: quartz
 editor: visual
 ---
 
-## Quarto
+# Welcome
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+### Introduction
 
-## Running Code
+::: {.card title="Introduction"}
+In this analysis I analyze a playlist I created called "I Don't Want This Groove to Ever End", named after the first track on it.
+:::
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+### The Playlist
 
+::: {.card title="The Playlist"}
+The playlist is a collection of what I call groovy songs: tracks that are heavily based on a looped or recurring musical phrase or rhythmic pattern.
+:::
+
+# The Analysis
+
+### Overview
+
+::: {.card title="Overview"}
+Here the analysis of the playlist will be shown.
+:::
+
+### Example Code
+
+::: {.card title="Example Code"}
 ```{r}
 1 + 1
 ```
-
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
+:::
