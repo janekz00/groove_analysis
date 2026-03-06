@@ -1,7 +1,10 @@
 ---
 title: "groove_analysis"
 author: "Janek Z"
-format: html
+format: 
+  dashboard:
+    orientation: columns
+theme: quartz
 editor: visual
 ---
 
