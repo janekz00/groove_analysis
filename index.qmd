@@ -52,6 +52,6 @@ Here the analysis of the playlist will be shown.
 ### Track Example
 
 ::: {.card title="Key and Chord Analysis"}
-```{include=analysis_of_keys.rmd}
+```{r child="analysis_of_keys.Rmd", echo=TRUE, results='asis'}
 ```
 :::
