@@ -9,11 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 ```{r}
 library(tidyverse)
 library(compmus)
@@ -130,7 +125,7 @@ lytd |>
   labs(x = "Time (s)", y = "")
 ```
 
-This is the analysis of keys of the track *Lose Yourself to Dance(Drumless Edition)* by *Daft Punk* and *Pharell Williams*. 
+This is the analysis of keys of the track *Lose Yourself to Dance (Drumless Edition)* by *Daft Punk* and *Pharrell Williams*. 
 
-Personally, I found that the key is much better shown using the standard Chromagram. There I clearly read that the song is in a b flat minor key, since it mostly relied on the c sharp pitch as well as b flat. There it is also neatly shown how the chord pattern repeats which makes this a very groovy song. I chose a drumless track on purpose since I thought that should help the software with finding the keys. 
-In this attached pitch templatte it is also visible that most energy remains in the b flat minor key. And I find the sudden dark peak around 210 seconds interesting, I believe that is where many different background voicces with own melodies overlap. 
+Personally, I found that the key is much better shown using the standard chromagram. There I clearly read that the song is in a b flat minor key, since it mostly relied on the c sharp pitch as well as b flat. There it is also neatly shown how the chord pattern repeats which makes this a very groovy song. I chose a drumless track on purpose since I thought that should help the software with finding the pitches. 
+In this attached pitch template it is also visible that most energy remains in the b flat minor key. And I find the sudden dark peak around 210 seconds interesting, I believe that is where many different background voices with own melodies overlap. 

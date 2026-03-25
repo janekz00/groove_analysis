@@ -1,7 +1,9 @@
 ---
 title: "groove_analysis"
 author: "Janek Z"
-format: dashboard
+format: 
+  dashboard: 
+    orientation: columns
 theme: quartz
 editor: visual
 ---
@@ -39,18 +41,9 @@ The playlist is a collection of what I call groovy songs: tracks that are heavil
 Here the analysis of the playlist will be shown.
 :::
 
-### Example Code
-
-::: {.card title="Example Code"}
-```{r}
-1 + 1
-```
-:::
-
-## Musical Analysis
+# Homework
 
 ### Track Example
-
 ::: {.card title="Key and Chord Analysis - hw week 10"}
 ```{r child="analysis_of_keys.Rmd", echo=TRUE, results='asis'}
 ```
