@@ -1,0 +1,127 @@
+---
+title: "Background"
+author: "Janek"
+date: "2026-03-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+playlist |>
+  summarise(
+    mean_speechiness = mean(Speechiness),
+    mean_acousticness = mean(Acousticness),
+    mean_liveness = mean(Liveness),
+    sd_speechiness = sd(Speechiness),
+    sd_acousticness = sd(Acousticness),
+    sd_liveness = sd(Liveness),
+    median_speechiness = median(Speechiness),
+    median_acousticness = median(Acousticness),
+    median_liveness = median(Liveness),
+    mad_speechiness = mad(Speechiness),
+    mad_acousticness = mad(Acousticness),
+    mad_liveness = mad(Liveness)
+  )
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+playlist$track_number <- 1:nrow(playlist)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r tempo graph}
+library(ggplot2)
+
+ggplot(playlist, aes(x = track_number, y = Tempo)) +
+  geom_line() +
+  geom_point() +
+  labs(
+    title = "Tempo Across Playlist Order",
+    x = "Playlist Position",
+    y = "Tempo"
+  ) +
+  theme_minimal()
+```
+This graph shows a few sudden spikes across the length of the playlist, although some of them can be eliminated. The first spike for example, which happens because track 7 has a tempo of 200, more than twice the tempo of the previous song. However, the song is very relaxed and I believe it can be perceived as half the speed. 
+The same case can be seen on track 72 - Lose Yourself to Dance. That is why I will divide the tempos of these songs by two. 
+
+```{r}
+library(dplyr)
+
+playlist <- playlist %>%
+  mutate(Tempo = if_else(
+    track_number %in% c(7, 72),
+    Tempo / 2,
+    Tempo
+  ))
+
+
+playlist %>%
+  filter(track_number %in% c(7, 72)) %>%
+  select(track_number, Tempo)
+```
+
+```{r tempo graph2}
+library(ggplot2)
+
+ggplot(playlist, aes(x = track_number, y = Tempo)) +
+  geom_line() +
+  geom_point() +
+  labs(
+    title = "Tempo Across Playlist Order",
+    x = "Playlist Position",
+    y = "Tempo"
+  ) +
+  theme_minimal()
+```
+
+```{r tempo graph2}
+library(ggplot2)
+
+ggplot(playlist, aes(x = track_number, y = Liveness)) +
+  geom_line() +
+  geom_point() +
+  labs(
+    title = "Tempo Across Playlist Order",
+    x = "Playlist Position",
+    y = "Tempo"
+  ) +
+  theme_minimal()
+```
+
+```{r kmeans scaling}
+features <- playlist %>%
+  select(Energy, Valence, Danceability, Tempo, Acousticness)
+
+features_scaled <- scale(features)
+```
+```{r kmeans}
+set.seed(123)
+
+kmeans_result <- kmeans(features_scaled, centers = 5, nstart = 25)
+
+playlist$cluster <- kmeans_result$cluster
+
+library(ggplot2)
+
+ggplot(playlist, aes(x = track_number, y = cluster)) +
+  geom_point() +
+  geom_line() +
+  theme_minimal()
+```
+
