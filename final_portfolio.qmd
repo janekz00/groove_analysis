@@ -44,6 +44,7 @@ Here the analysis of the playlist will be shown.
 # Homework
 
 ### Track Example
+
 ::: {.card title="Key and Chord Analysis - hw week 10"}
 ```{r child="analysis_of_keys.Rmd", echo=TRUE, results='asis'}
 ```
