@@ -45,7 +45,7 @@ You can view and listen to the playlist here:
 :::
 :::
 
-# test background
+# Background
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -249,6 +249,7 @@ Based on this info, I decided to compare the following neighbouring songs:\
 - *Find Your State of Mind* and *I'll Be With You* (tracks 6 and 7), because the songs differ very much in the allround transition score, but not so much in the individual classifications, so I wonder how they differ from eachoter\
 - *Goldrush* and *Words 2b Heard Meets Planetary Funk Alert* (tracks 69 and 70), because they differ a lot on many aspects and I wonder if there are some features that show that I have placed them next to each other correctly. 
 
+# Clustering
 ```{r kmeans scaling}
 features <- playlist %>%
   select(Energy, Valence, Danceability, Tempo, Acousticness)
@@ -368,12 +369,6 @@ ggplot(elbow_df, aes(x = k, y = wss)) +
 <!-- ``` -->
 <!-- ::: -->
 
-# Homework
+# Chroma features [pitch]
 
-### Track Example
-
-::: {.card title="Key and Chord Analysis - hw week 10"}
-```{r child="analysis_of_keys.Rmd", echo=TRUE, results='asis'}
-```
-:::
-:::
+I have made these two self similarity matrices, based on chroma features in:
