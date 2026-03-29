@@ -8,7 +8,7 @@
 
 <meta name="author" content="Janek Z">
 
-<title>groove_analysis</title>
+<title>Groove Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,41 +24,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -69,258 +34,388 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-b56f384592c8919c3ccc965f94d6dfe7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="index_files/libs/bootstrap/bootstrap-dark-b56f384592c8919c3ccc965f94d6dfe7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="index_files/libs/bootstrap/bootstrap-b56f384592c8919c3ccc965f94d6dfe7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="index_files/libs/quarto-dashboard/quarto-dashboard.js"></script>
-<script src="index_files/libs/quarto-dashboard/stickythead.js"></script>
-
-
-
-<script src="index_files/libs/quarto-dashboard/web-components.js" type="module"></script>
-<script src="index_files/libs/quarto-dashboard/components.js"></script>
-
+<link href="index_files/libs/bootstrap/bootstrap-5c6c6b86b08c86c5ec4f2e8cf37a5589.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
 
-<body class="quarto-dashboard dashboard-fill fullcontent quarto-light">
+<body class="fullcontent quarto-light">
 
-<header id="quarto-dashboard-header">
-<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
-  <div class="navbar-container container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>    
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Groove Analysis</h1>
+</div>
 
 
-    <div class="navbar-brand-container">
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Janek Z </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
 
 
-      <div class="navbar-title">
-        <div class="navbar-title-text"><a href="#">groove_analysis</a></div>
-        
-        <div class="navbar-author">Janek Z</div>
-      </div>
-    </div>
-<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-welcome" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#welcome" data-scrolling="false" href="#welcome" aria-controls="welcome" aria-selected="true"><span class="nav-link-text">Welcome</span></a></li><li class="nav-item" role="presentation"><a id="tab-the-analysis" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#the-analysis" data-scrolling="false" href="#the-analysis" aria-controls="the-analysis" aria-selected="false"><span class="nav-link-text">The Analysis</span></a></li><li class="nav-item" role="presentation"><a id="tab-homework" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#homework" data-scrolling="false" href="#homework" aria-controls="homework" aria-selected="false"><span class="nav-link-text">Homework</span></a></li></ul></div></div>
-</nav>
 </header>
-<div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">  
 
-<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-columns: minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div id="welcome" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-welcome">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div class="card html-fill-item html-fill-container bslib-card" data-title="About this project" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header"><div class="card-title"><span style="display: inline">
-About this project
-</span></div></div>
-<div class="card-body html-fill-item html-fill-container">
-<p>this is the transformed README file:</p>
+
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Welcome</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Background</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Clustering</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Chroma Features [pitch]</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">Timbre Features</a></li></ul>
+<div class="tab-content page-columns page-full">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="columns">
+<div class="column" style="width:55%;">
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
 <p>This repository was created for the course <strong>Computational Musicology</strong> at the University of Amsterdam.<br>
 It contains an analysis of a selected corpus of music from my playlist <em>“I Don’t Want This Groove to Ever End”</em>.</p>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div>
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div class="card html-fill-item html-fill-container bslib-card" data-title="Introduction" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header"><div class="card-title"><span style="display: inline">
-Introduction
-</span></div></div>
-<div class="card-body html-fill-item html-fill-container">
-<p>In this analysis I analyze a playlist I created called “I Don’t Want This Groove to Ever End”, named after the first track on it.</p>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div>
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div class="card html-fill-item html-fill-container bslib-card" data-title="The Playlist" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header"><div class="card-title"><span style="display: inline">
-The Playlist
-</span></div></div>
-<div class="card-body html-fill-item html-fill-container">
-<p>The playlist is a collection of what I call groovy songs: tracks that are heavily based on a looped or recurring musical phrase or rhythmic pattern.</p>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div>
-</div>
-</div>
-</div><div id="the-analysis" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-the-analysis">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card html-fill-item html-fill-container bslib-card" data-title="Overview" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header"><div class="card-title"><span style="display: inline">
-Overview
-</span></div></div>
-<div class="card-body html-fill-item html-fill-container">
-<p>Here the analysis of the playlist will be shown.</p>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div>
-</div>
-</div><div id="homework" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="columns" aria-labelledby="tab-homework">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card html-fill-item html-fill-container bslib-card" data-title="Key and Chord Analysis - hw week 10" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header"><div class="card-title"><span style="display: inline">
-Key and Chord Analysis - hw week 10
-</span></div></div>
-<div class="card-body html-fill-item html-fill-container">
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(compmus)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>circshift <span class="ot">&lt;-</span> <span class="cf">function</span>(v, n) {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">==</span> <span class="dv">0</span>) v <span class="cf">else</span> <span class="fu">c</span>(<span class="fu">tail</span>(v, n), <span class="fu">head</span>(v, <span class="sc">-</span>n))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#      C     C#    D     Eb    E     F     F#    G     Ab    A     Bb    B</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>major_chord <span class="ot">&lt;-</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(   <span class="dv">1</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">1</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">1</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">0</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>minor_chord <span class="ot">&lt;-</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(   <span class="dv">1</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">1</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">1</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">0</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>seventh_chord <span class="ot">&lt;-</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(   <span class="dv">1</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">1</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">1</span>,    <span class="dv">0</span>,    <span class="dv">0</span>,    <span class="dv">1</span>,    <span class="dv">0</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>major_key <span class="ot">&lt;-</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">6.35</span>, <span class="fl">2.23</span>, <span class="fl">3.48</span>, <span class="fl">2.33</span>, <span class="fl">4.38</span>, <span class="fl">4.09</span>, <span class="fl">2.52</span>, <span class="fl">5.19</span>, <span class="fl">2.39</span>, <span class="fl">3.66</span>, <span class="fl">2.29</span>, <span class="fl">2.88</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>minor_key <span class="ot">&lt;-</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">6.33</span>, <span class="fl">2.68</span>, <span class="fl">3.52</span>, <span class="fl">5.38</span>, <span class="fl">2.60</span>, <span class="fl">3.53</span>, <span class="fl">2.54</span>, <span class="fl">4.75</span>, <span class="fl">3.98</span>, <span class="fl">2.69</span>, <span class="fl">3.34</span>, <span class="fl">3.17</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>chord_templates <span class="ot">&lt;-</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>name, <span class="sc">~</span>template,</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gb:7"</span>, <span class="fu">circshift</span>(seventh_chord, <span class="dv">6</span>),</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gb:maj"</span>, <span class="fu">circshift</span>(major_chord, <span class="dv">6</span>),</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Bb:min"</span>, <span class="fu">circshift</span>(minor_chord, <span class="dv">10</span>),</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Db:maj"</span>, <span class="fu">circshift</span>(major_chord, <span class="dv">1</span>),</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"F:min"</span>, <span class="fu">circshift</span>(minor_chord, <span class="dv">5</span>),</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ab:7"</span>, <span class="fu">circshift</span>(seventh_chord, <span class="dv">8</span>),</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ab:maj"</span>, <span class="fu">circshift</span>(major_chord, <span class="dv">8</span>),</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C:min"</span>, <span class="fu">circshift</span>(minor_chord, <span class="dv">0</span>),</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Eb:7"</span>, <span class="fu">circshift</span>(seventh_chord, <span class="dv">3</span>),</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Eb:maj"</span>, <span class="fu">circshift</span>(major_chord, <span class="dv">3</span>),</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"G:min"</span>, <span class="fu">circshift</span>(minor_chord, <span class="dv">7</span>),</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Bb:7"</span>, <span class="fu">circshift</span>(seventh_chord, <span class="dv">10</span>),</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Bb:maj"</span>, <span class="fu">circshift</span>(major_chord, <span class="dv">10</span>),</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D:min"</span>, <span class="fu">circshift</span>(minor_chord, <span class="dv">2</span>),</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"F:7"</span>, <span class="fu">circshift</span>(seventh_chord, <span class="dv">5</span>),</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"F:maj"</span>, <span class="fu">circshift</span>(major_chord, <span class="dv">5</span>),</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A:min"</span>, <span class="fu">circshift</span>(minor_chord, <span class="dv">9</span>),</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C:7"</span>, <span class="fu">circshift</span>(seventh_chord, <span class="dv">0</span>),</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C:maj"</span>, <span class="fu">circshift</span>(major_chord, <span class="dv">0</span>),</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"E:min"</span>, <span class="fu">circshift</span>(minor_chord, <span class="dv">4</span>),</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"G:7"</span>, <span class="fu">circshift</span>(seventh_chord, <span class="dv">7</span>),</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"G:maj"</span>, <span class="fu">circshift</span>(major_chord, <span class="dv">7</span>),</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B:min"</span>, <span class="fu">circshift</span>(minor_chord, <span class="dv">11</span>),</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D:7"</span>, <span class="fu">circshift</span>(seventh_chord, <span class="dv">2</span>),</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D:maj"</span>, <span class="fu">circshift</span>(major_chord, <span class="dv">2</span>),</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"F#:min"</span>, <span class="fu">circshift</span>(minor_chord, <span class="dv">6</span>),</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A:7"</span>, <span class="fu">circshift</span>(seventh_chord, <span class="dv">9</span>),</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A:maj"</span>, <span class="fu">circshift</span>(major_chord, <span class="dv">9</span>),</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C#:min"</span>, <span class="fu">circshift</span>(minor_chord, <span class="dv">1</span>),</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">"E:7"</span>, <span class="fu">circshift</span>(seventh_chord, <span class="dv">4</span>),</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="st">"E:maj"</span>, <span class="fu">circshift</span>(major_chord, <span class="dv">4</span>),</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="st">"G#:min"</span>, <span class="fu">circshift</span>(minor_chord, <span class="dv">8</span>),</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B:7"</span>, <span class="fu">circshift</span>(seventh_chord, <span class="dv">11</span>),</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B:maj"</span>, <span class="fu">circshift</span>(major_chord, <span class="dv">11</span>),</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D#:min"</span>, <span class="fu">circshift</span>(minor_chord, <span class="dv">3</span>)</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>key_templates <span class="ot">&lt;-</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>name, <span class="sc">~</span>template,</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gb:maj"</span>, <span class="fu">circshift</span>(major_key, <span class="dv">6</span>),</span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Bb:min"</span>, <span class="fu">circshift</span>(minor_key, <span class="dv">10</span>),</span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Db:maj"</span>, <span class="fu">circshift</span>(major_key, <span class="dv">1</span>),</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>    <span class="st">"F:min"</span>, <span class="fu">circshift</span>(minor_key, <span class="dv">5</span>),</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ab:maj"</span>, <span class="fu">circshift</span>(major_key, <span class="dv">8</span>),</span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C:min"</span>, <span class="fu">circshift</span>(minor_key, <span class="dv">0</span>),</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Eb:maj"</span>, <span class="fu">circshift</span>(major_key, <span class="dv">3</span>),</span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    <span class="st">"G:min"</span>, <span class="fu">circshift</span>(minor_key, <span class="dv">7</span>),</span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Bb:maj"</span>, <span class="fu">circshift</span>(major_key, <span class="dv">10</span>),</span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D:min"</span>, <span class="fu">circshift</span>(minor_key, <span class="dv">2</span>),</span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    <span class="st">"F:maj"</span>, <span class="fu">circshift</span>(major_key, <span class="dv">5</span>),</span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A:min"</span>, <span class="fu">circshift</span>(minor_key, <span class="dv">9</span>),</span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C:maj"</span>, <span class="fu">circshift</span>(major_key, <span class="dv">0</span>),</span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>    <span class="st">"E:min"</span>, <span class="fu">circshift</span>(minor_key, <span class="dv">4</span>),</span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>    <span class="st">"G:maj"</span>, <span class="fu">circshift</span>(major_key, <span class="dv">7</span>),</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B:min"</span>, <span class="fu">circshift</span>(minor_key, <span class="dv">11</span>),</span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D:maj"</span>, <span class="fu">circshift</span>(major_key, <span class="dv">2</span>),</span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>    <span class="st">"F#:min"</span>, <span class="fu">circshift</span>(minor_key, <span class="dv">6</span>),</span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A:maj"</span>, <span class="fu">circshift</span>(major_key, <span class="dv">9</span>),</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C#:min"</span>, <span class="fu">circshift</span>(minor_key, <span class="dv">1</span>),</span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>    <span class="st">"E:maj"</span>, <span class="fu">circshift</span>(major_key, <span class="dv">4</span>),</span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>    <span class="st">"G#:min"</span>, <span class="fu">circshift</span>(minor_key, <span class="dv">8</span>),</span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B:maj"</span>, <span class="fu">circshift</span>(major_key, <span class="dv">11</span>),</span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D#:min"</span>, <span class="fu">circshift</span>(minor_key, <span class="dv">3</span>)</span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>lytd <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/Desktop/UvA/computational_musicology/groove_analysis/lytd_chroma.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold html-fill-item html-fill-container"><div class="sourceCode cell-code html-fill-item html-fill-container" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lytd <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compmus_wrangle_chroma</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">%%</span> <span class="dv">50</span>L <span class="sc">==</span> <span class="dv">0</span>L) <span class="sc">|&gt;</span> </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compmus_match_pitch_template</span>(</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    key_templates,         <span class="co"># Change to chord_templates if desired</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"manhattan"</span>,  <span class="co"># Try different distance metrics</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">norm =</span> <span class="st">"manhattan"</span>     <span class="co"># Try different norms</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> start <span class="sc">+</span> duration <span class="sc">/</span> <span class="dv">2</span>, <span class="at">width =</span> <span class="dv">50</span> <span class="sc">*</span> duration, <span class="at">y =</span> name, <span class="at">fill =</span> d)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time (s)"</span>, <span class="at">y =</span> <span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="768">
-<p>This is the analysis of keys of the track <em>Lose Yourself to Dance (Drumless Edition)</em> by <em>Daft Punk</em> and <em>Pharrell Williams</em>.</p>
-<p>Personally, I found that the key is much better shown using the standard chromagram. There I clearly read that the song is in a b flat minor key, since it mostly relied on the c sharp pitch as well as b flat. There it is also neatly shown how the chord pattern repeats which makes this a very groovy song. I chose a drumless track on purpose since I thought that should help the software with finding the pitches. In this attached pitch template it is also visible that most energy remains in the b flat minor key. And I find the sudden dark peak around 210 seconds interesting, I believe that is where many different background voices with own melodies overlap.</p>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+<section id="the-playlist" class="level3">
+<h3 class="anchored" data-anchor-id="the-playlist">The Playlist</h3>
+<p>The playlist <em>“I Don’t Want This Groove to Ever End”</em>, named after its first track, is a collection of what I find groovy songs: <strong>tracks that are heavily based on a looped or recurring musical phrase or rhythmic pattern</strong>. Only songs of around 6 minutes or longer get added to this playlist, to allow the listener to immerse themselves in each one.</p>
+<p>The tracks are mostly unique and vary greatly, and hearing a contrasting groove immediately after another can disrupt the listening experience. To prevent this, I have put a lot of thought into arranging their order.</p>
+</section>
+<section id="the-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="the-analysis">The Analysis</h3>
+<p>The goal of the conducted analysis will be to show how well some musical features can be used to determine the order of the playlist, based on the similarity of the tracks. The following musical featuers will be used: - like Spotify track-level features, - chroma, timbre, and temporal features, - and volume or loudness</p>
+</section>
+</section>
+</div><div class="column" style="width:5%;">
 
+</div><div class="column" style="width:40%;">
+<p style="margin-top: 0;">
+</p><p>You can view and listen to the playlist here:</p>
+<p></p>
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5R4pN6j7ogQeuaAVptvOnW?utm_source=generator&amp;theme=0" width="100%" height="400" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+</iframe>
 </div>
 </div>
+</div>
+<div id="tabset-1-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<section id="mix-of-features" class="level3">
+<h3 class="anchored" data-anchor-id="mix-of-features">Mix of features</h3>
+<p>After having loaded the playlist, I deleted the last four tracks from the data frame that will be analyzed, since they are not yet assigned a place in the playlist. I have then computed the transition distance across all features. This will allow me to check for spikes along the playlist length to see which moments or tracks have the least smooth transitions so that I can focus on those.<br>
+</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br>
+Note that the distances of subsequent points on the graph does not correspong to a bigger spike, but for each track the transition distance from the previous one is shown. This means that everywhere there is a spike, there is a large transition distance. <br> Also as the first song has none before it, it is omitted from the graph, we start with the second track.<br>
+This graph shows that when we take a couple of the track-level features, namely: energy, tempo and danceability, the following transitions are between most different songs:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Top 5 Playlist Transitions</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">previous_track</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Track Name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">track_number</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">transition_distance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Find Your State of Mind</td>
+<td style="text-align: left;">I'll Be with You</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">111.88</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sex Jam</td>
+<td style="text-align: left;">Lose Yourself to Dance (Drumless Edition) (feat. Pharrell Williams)</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">102.95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lose Yourself to Dance (Drumless Edition) (feat. Pharrell Williams)</td>
+<td style="text-align: left;">Daybreak</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">101.85</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I'll Be with You</td>
+<td style="text-align: left;">Hung Up On My Baby - Extended Jam</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">98.98</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Goldrush</td>
+<td style="text-align: left;">Words 2B Heard Meets Planetary Funk Alert</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">50.29</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="tempo" class="level3">
+<h3 class="anchored" data-anchor-id="tempo">Tempo</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/tempo%20graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br> This graph shows a few sudden spikes across the length of the playlist, although some of them can be eliminated. The first spike for example, which happens because track 7 has a tempo of 200, more than twice the tempo of the previous song. However, the song is very relaxed and I believe it can be perceived as half the speed. The same case can be seen on track 72 - Lose Yourself to Dance. That is why I will divide the tempos of these songs by two.</p>
+</section>
+<section id="singular-features" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="singular-features">Singular Features</h3>
+<p>Now that the bpm has been scaled, here are the graphs for tempo across tracks in the playlists, as well as danceability and energy.</p>
+<div class="cell column-screen-inset-shaded quarto-layout-panel" data-layout-nrow="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="index_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="index_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<p><br> These graphs show that seemingly the track-level features that best describe the genre across this playlist are tempo and danceability. Both parameters are most stable in the middle of the playlist between tracks 20-40 more or less. Danceability shows a slight rise and then fall, which would make sense according to how the playlist is structured, but it still has high differences between some neighbouring tracks.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Top 5 Tempo Transitions</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">previous_track</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Track Name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">track_number</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">tempo_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Goldrush</td>
+<td style="text-align: left;">Words 2B Heard Meets Planetary Funk Alert</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">50.29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Song of Life - Remastered</td>
+<td style="text-align: left;">Freefall (feat. Malcolm Duncan)</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">40.86</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NaaNaaNaa - Live</td>
+<td style="text-align: left;">Sunny</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">33.46</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Freefall (feat. Malcolm Duncan)</td>
+<td style="text-align: left;">Bonita Applebum - Sir Piers and Si Ashton's Curious House Mix</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">33.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Veridis Quo</td>
+<td style="text-align: left;">Two Months Off</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">28.10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Top 5 Danceability Transitions</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">previous_track</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Track Name</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">track_number</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">danceability_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">NaaNaaNaa - Live</td>
+<td style="text-align: left;">Sunny</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">0.37</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I Don't Want This Groove to Ever End</td>
+<td style="text-align: left;">Cosmic Interlude</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Find Your State of Mind</td>
+<td style="text-align: left;">I'll Be with You</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.34</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cosmic Interlude</td>
+<td style="text-align: left;">I'm Doing Fine (feat. Amp Dog Knight)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.34</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bonita Applebum - Sir Piers and Si Ashton's Curious House Mix</td>
+<td style="text-align: left;">Rebirth</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">0.30</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="chosen-tracks" class="level3">
+<h3 class="anchored" data-anchor-id="chosen-tracks">Chosen Tracks</h3>
+<p>Based on this info, I decided to compare the following neighbouring songs:<br>
+- <em>Find Your State of Mind</em> and <em>I’ll Be With You</em> (tracks 6 and 7), because the songs differ very much in the allround transition score, but not so much in the individual classifications, so I wonder how they differ from eachoter<br>
+- <em>Goldrush</em> and <em>Words 2b Heard Meets Planetary Funk Alert</em> (tracks 69 and 70), because they differ a lot on many aspects and I wonder if there are some features that show that I have placed them next to each other correctly.</p>
+</section>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/kmeans3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/kmeans5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br> <!-- ### Select a Feature to View --></p>
+<!-- ```{r, echo=FALSE} -->
+<!-- # Functions to generate plot, table, and conclusion based on selected feature -->
+<!-- q_feature_plot <- function(feature) { -->
+<!--   if (feature == "tempo") { -->
+<!--     ggplot(playlist, aes(x = track_number, y = Tempo)) + -->
+<!--       geom_line() + geom_point() + -->
+<!--       labs(title="Tempo Across Playlist Order", x="Playlist Position", y="Tempo") + -->
+<!--       theme_minimal() -->
+<!--   } else if (feature == "liveness") { -->
+<!--     ggplot(playlist, aes(x = track_number, y = Liveness)) + -->
+<!--       geom_line() + geom_point() + -->
+<!--       labs(title="Liveness Across Playlist Order", x="Playlist Position", y="Liveness") + -->
+<!--       theme_minimal() -->
+<!--   } else if (feature == "energy") { -->
+<!--     ggplot(playlist, aes(x = track_number, y = Energy)) + -->
+<!--       geom_line() + geom_point() + -->
+<!--       labs(title="Energy Across Playlist Order", x="Playlist Position", y="Energy") + -->
+<!--       theme_minimal() -->
+<!--   } -->
+<!-- } -->
+<!-- q_feature_table <- function(feature) { -->
+<!--   if (feature == "tempo") top5_tempo_transitions -->
+<!--   else if (feature == "Liveness") top5_liveness_transitions -->
+<!--   else top5_energy_transitions -->
+<!-- } -->
+<!-- q_feature_conclusion <- function(feature) { -->
+<!--   if (feature == "tempo") "Conclusion: This shows spikes at tracks 7 and 62, etc." -->
+<!--   else if (feature == "Liveness") "Conclusion: Peaks indicate live-feel transitions." -->
+<!--   else "Conclusion: Large jumps in energy show strong contrast." -->
+<!-- } -->
+<!-- ``` -->
+<!-- ```{r, echo=FALSE} -->
+<!-- # Display plot, table, and conclusion for the selected feature -->
+<!-- q_feature_plot(feature) -->
+<!-- q_feature_table(feature) -->
+<!-- cat(q_feature_conclusion(feature)) -->
+<!-- ``` -->
+<!-- # Background -->
+<!-- ::: {.card title="Assesing the Order"} -->
+<!-- ```{r child="Untitled.Rmd", echo=FALSE, results='asis'} -->
+<!-- knitr::knit_child('Untitled.Rmd', envir = list(feature = feature)) -->
+<!-- ``` -->
+<!-- ::: -->
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p>Here are the chroma features of the first two tracks,</p>
+<p><em>Find Your State of Mind</em> by <em>Jestofunk</em>:<br>
+<img src="fysm_chroma.png" class="img-fluid" alt="fysm chroma"><br>
+<br>
+<em>I’ll be With You</em> by <em>Bernie Worrell</em>:<br>
+<img src="ibwy_chroma.png" class="img-fluid" alt="ibwy chroma"><br>
+</p>
+<p>They show that the songs are played in different keys, which may contribute to their incompatibility. Although, they do share a sudden spike in the e flat pitch around three fourths of the way through the songs, interestingly.<br>
+And the second two,</p>
+<p><em>Goldrush</em> by <em>the Herbaliser</em>:<br>
+<img src="goldrush_chroma.png" class="img-fluid" alt="gr chroma"><br>
+<br>
+<em>Words 2B Heard Meets Planetary Funk Alert</em> by <em>MC Conrad</em>:<br>
+<img src="words2BChroma.png" class="img-fluid" style="width:85.0%" alt="w2bh chroma"><br>
+</p>
+<p>Here there again isn’t overlap, however in <em>Goldrush</em> we can see that the most prominent pitches are A and D, while in <em>Words 2B Heard…</em> A flat and C sharp. This suggests that the pitch content of the second song is transposed down by a semitone relative to the first, but both might use a similar melodic structure.</p>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<p>Here are the cepstrograms for the analysed songs:</p>
+<p><em>Find Your State of Mind</em> by <em>Jestofunk</em>:<br>
+<img src="fysm_timbre.png" class="img-fluid" alt="fysm timbre"><br>
+<br>
+<em>I’ll be With You</em> by <em>Bernie Worrell</em>:<br>
+<img src="ibwy_timbre.png" class="img-fluid" alt="ibwy timbre"><br>
+</p>
+<p>They show that the songs are played in different keys, which may contribute to their incompatibility. Although, they do share a sudden spike in the e flat pitch around three fourths of the way through the songs, interestingly.<br>
+And the second two,</p>
+<p><em>Goldrush</em> by <em>the Herbaliser</em>:<br>
+<img src="goldrush_timbre.png" class="img-fluid" alt="gr chroma"><br>
+<br>
+<em>Words 2B Heard Meets Planetary Funk Alert</em> by <em>MC Conrad</em>:<br>
+<img src="w2bh_cepst.png" class="img-fluid" style="width:85.0%" alt="w2bh chroma"><br>
+</p>
 </div>
 </div>
 </div>
 
-
+</main>
+<!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -721,16 +816,8 @@ Key and Chord Analysis - hw week 10
     }
   });
   </script>
-</div> <!-- /container fluid -->
+</div> <!-- /content -->
 
-<script type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (_event) {
-  if (window.bslib.Card) {
-    window.bslib.Card.initializeAllCards();
-  }
-}); 
-</script>
-  
 
 
 
