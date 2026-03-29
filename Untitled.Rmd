@@ -1,19 +1,14 @@
----
-title: "Background"
-author: "Janek"
-date: "2026-03-28"
-output: html_document
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(dplyr)
 library(readr)
 library(ggplot2)
 ```
 
-```{r load playlist}
+```{r load playlist, include=FALSE}
 playlist <- read_csv("~/Desktop/UvA/computational_musicology/groove_analysis/IDWTGTEE/I_Don't_Want_This_Groove_to_Ever_End.csv")
 
 playlist <- playlist[1:(nrow(playlist) - 4), ]
@@ -34,13 +29,13 @@ playlist |>
     mad_liveness = mad(Liveness)
   )
 ```
+
 ```{r number tracks, echo=FALSE}
 playlist$track_number <- 1:nrow(playlist)
 ```
+### Mix of features
+After having loaded the playlist, I deleted the last four tracks from the data frame that will be analyzed, since they are not yet assigned a place in the playlist. I have then computed the transition distance across all features. This will allow me to check for spikes along the playlist length to see which moments or tracks have the least smooth transitions so that I can focus on those.\
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-After having loaded the playlist, I will compute the transition distance across all features. This will allow me to check for spikes along the playlist length to see which moments or tracks have the least smooth transitions so that I can focus on those. 
 ```{r}
 # compute transition distance
 playlist <- playlist %>%
@@ -63,23 +58,28 @@ ggplot(playlist, aes(x = track_number, y = transition_distance)) +
   geom_point() +
   theme_minimal()
 ```
-Note that the distances of subsequent points on the graph does not correspong to a bigger spike, but for each track the transition distance from the previous one is shown. This means that everywhere there is a spike, there is a large transition distance. <br>
-Also as the first song has none before it, it is omitted from the graph, we start with the second track
 
-```{r}
+\
+Note that the distances of subsequent points on the graph does not correspong to a bigger spike, but for each track the transition distance from the previous one is shown. This means that everywhere there is a spike, there is a large transition distance. <br> Also as the first song has none before it, it is omitted from the graph, we start with the second track.\
+This graph shows that when we take a couple of the track-level features, namely: energy, valence, tempo and danceability, the following transitions are between most different songs: 
+
+```{r, echo=FALSE}
+library(knitr)
+
 top5_transitions <- playlist %>%
   mutate(previous_track = lag(`Track Name`)) %>%
   slice_max(order_by = transition_distance, n = 5) %>%
   select(previous_track, `Track Name`, track_number, transition_distance)
 
-top5_transitions
+kable(top5_transitions, format = "html", digits = 2, caption = "Top 5 Playlist Transitions")
 ```
 
-<br>
-To be sure that my ordering of the track influenced the Spotify track level features of the playlist at all, I will compare the mean multivariate distance of both my playlist and the same songs from it ordered in a random way.
-
-```{r}
+```{r, include=FALSE}
 # check against randomness
+
+
+# To make sure that my ordering of the track influenced the Spotify track level features of the playlist at all, I will compare the mean multivariate distance of both my playlist and the same songs from it ordered in a random way.
+
 
 set.seed(123)
 
@@ -98,9 +98,11 @@ mean_original <- mean(playlist$transition_distance, na.rm = TRUE)
 
 mean_original
 mean(random_distances)
-```
-This shows that my ordering did indeed influence the Spotify track level features positively, as expected. The mean multivariate distance between tracks is lower in my playlist than in a randomly ordered one. 
 
+# This shows that my ordering did indeed influence the Spotify track level features positively, as expected. The mean multivariate distance between tracks is lower in my playlist than in a randomly ordered one.
+
+```
+The following graphs show the changes between tracks in tempo
 
 ```{r tempo graph}
 ggplot(playlist, aes(x = track_number, y = Tempo)) +
@@ -113,9 +115,8 @@ ggplot(playlist, aes(x = track_number, y = Tempo)) +
   ) +
   theme_minimal()
 ```
-<br>
-This graph shows a few sudden spikes across the length of the playlist, although some of them can be eliminated. The first spike for example, which happens because track 7 has a tempo of 200, more than twice the tempo of the previous song. However, the song is very relaxed and I believe it can be perceived as half the speed. 
-The same case can be seen on track 72 - Lose Yourself to Dance. That is why I will divide the tempos of these songs by two. 
+
+<br> This graph shows a few sudden spikes across the length of the playlist, although some of them can be eliminated. The first spike for example, which happens because track 7 has a tempo of 200, more than twice the tempo of the previous song. However, the song is very relaxed and I believe it can be perceived as half the speed. The same case can be seen on track 72 - Lose Yourself to Dance. That is why I will divide the tempos of these songs by two.
 
 ```{r}
 library(dplyr)
@@ -144,7 +145,9 @@ ggplot(playlist, aes(x = track_number, y = Tempo)) +
   ) +
   theme_minimal()
 ```
+
 <br>
+
 ```{r liveness graph2}
 ggplot(playlist, aes(x = track_number, y = Liveness)) +
   geom_line() +
@@ -156,7 +159,9 @@ ggplot(playlist, aes(x = track_number, y = Liveness)) +
   ) +
   theme_minimal()
 ```
+
 <br>
+
 ```{r energy graph}
 ggplot(playlist, aes(x = track_number, y = Energy)) +
   geom_line() +
@@ -168,7 +173,9 @@ ggplot(playlist, aes(x = track_number, y = Energy)) +
   ) +
   theme_minimal()
 ```
+
 <br>
+
 ```{r}
 # Top 5 Tempo transitions
 top5_tempo_transitions <- playlist %>%
@@ -204,7 +211,6 @@ top5_energy_transitions <- playlist %>%
 top5_energy_transitions
 ```
 
-
 ```{r kmeans scaling}
 features <- playlist %>%
   select(Energy, Valence, Danceability, Tempo, Acousticness)
@@ -225,7 +231,9 @@ ggplot(playlist, aes(x = track_number, y = cluster)) +
   geom_line() +
   theme_minimal()
 ```
+
 <br>
+
 ```{r kmeans5}
 # 5 clusters
 set.seed(13)
@@ -239,10 +247,11 @@ ggplot(playlist, aes(x = track_number, y = cluster)) +
   geom_line() +
   theme_minimal()
 ```
+
 <br>
+
 ```{r}
 # check optimal number of clusters
-
 set.seed(123)
 
 wss <- sapply(seq(1, 11, by = 2), function(k) {
@@ -263,7 +272,50 @@ ggplot(elbow_df, aes(x = k, y = wss)) +
     y = "Within-Cluster Sum of Squares"
   ) +
   theme_minimal()
-
-
 ```
+
 <br>
+<!-- ### Select a Feature to View -->
+
+<!-- ```{r, echo=FALSE} -->
+<!-- # Functions to generate plot, table, and conclusion based on selected feature -->
+
+<!-- q_feature_plot <- function(feature) { -->
+<!--   if (feature == "tempo") { -->
+<!--     ggplot(playlist, aes(x = track_number, y = Tempo)) + -->
+<!--       geom_line() + geom_point() + -->
+<!--       labs(title="Tempo Across Playlist Order", x="Playlist Position", y="Tempo") + -->
+<!--       theme_minimal() -->
+<!--   } else if (feature == "liveness") { -->
+<!--     ggplot(playlist, aes(x = track_number, y = Liveness)) + -->
+<!--       geom_line() + geom_point() + -->
+<!--       labs(title="Liveness Across Playlist Order", x="Playlist Position", y="Liveness") + -->
+<!--       theme_minimal() -->
+<!--   } else if (feature == "energy") { -->
+<!--     ggplot(playlist, aes(x = track_number, y = Energy)) + -->
+<!--       geom_line() + geom_point() + -->
+<!--       labs(title="Energy Across Playlist Order", x="Playlist Position", y="Energy") + -->
+<!--       theme_minimal() -->
+<!--   } -->
+<!-- } -->
+
+<!-- q_feature_table <- function(feature) { -->
+<!--   if (feature == "tempo") top5_tempo_transitions -->
+<!--   else if (feature == "Liveness") top5_liveness_transitions -->
+<!--   else top5_energy_transitions -->
+<!-- } -->
+
+<!-- q_feature_conclusion <- function(feature) { -->
+<!--   if (feature == "tempo") "Conclusion: This shows spikes at tracks 7 and 62, etc." -->
+<!--   else if (feature == "Liveness") "Conclusion: Peaks indicate live-feel transitions." -->
+<!--   else "Conclusion: Large jumps in energy show strong contrast." -->
+<!-- } -->
+<!-- ``` -->
+
+<!-- ```{r, echo=FALSE} -->
+<!-- # Display plot, table, and conclusion for the selected feature -->
+<!-- q_feature_plot(feature) -->
+<!-- q_feature_table(feature) -->
+<!-- cat(q_feature_conclusion(feature)) -->
+<!-- ``` -->
+
