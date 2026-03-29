@@ -8,15 +8,14 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(dplyr)
+library(readr)
+library(ggplot2)
 ```
 
-## R Markdown
+```{r load playlist}
+playlist <- read_csv("~/Desktop/UvA/computational_musicology/groove_analysis/IDWTGTEE/I_Don't_Want_This_Groove_to_Ever_End.csv")
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
 playlist |>
   summarise(
     mean_speechiness = mean(Speechiness),
@@ -33,20 +32,63 @@ playlist |>
     mad_liveness = mad(Liveness)
   )
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
+```{r number tracks, echo=FALSE}
 playlist$track_number <- 1:nrow(playlist)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
-```{r tempo graph}
-library(ggplot2)
+After having loaded the playlist, I will compute the transition distance across all features. This will allow me to check for spikes along the playlist length to see which moments or tracks have the least smooth transitions so that I can focus on those. 
+```{r}
+# compute transition distance
+playlist <- playlist %>%
+  mutate(
+    d_energy = Energy - lag(Energy),
+    d_valence = Valence - lag(Valence),
+    d_tempo = Tempo - lag(Tempo),
+    d_dance = Danceability - lag(Danceability)
+  )
 
+playlist <- playlist %>%
+  mutate(
+    transition_distance = sqrt(
+      d_energy^2 + d_valence^2 + d_tempo^2 + d_dance^2
+    )
+  )
+
+ggplot(playlist, aes(x = track_number, y = transition_distance)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal()
+```
+<br>
+To be sure that my ordering of the track influenced the Spotify track level features of the playlist at all, I will compare the mean multivariate distance of both my playlist and the same songs from it ordered in a random way.
+
+```{r}
+# check against randomness
+
+set.seed(123)
+
+random_distances <- replicate(100, {
+  shuffled <- playlist %>% sample_frac(1)
+  
+  d_energy <- diff(shuffled$Energy)
+  d_valence <- diff(shuffled$Valence)
+  d_tempo  <- diff(shuffled$Tempo)
+  d_dance  <- diff(shuffled$Danceability)
+  
+  mean(sqrt(d_energy^2 + d_valence^2 + d_tempo^2 + d_dance^2))
+})
+
+mean_original <- mean(playlist$transition_distance, na.rm = TRUE)
+
+mean_original
+mean(random_distances)
+```
+This shows that my ordering did indeed influence the Spotify track level features positively, as expected. The mean multivariate distance between tracks is lower in my playlist than in a randomly ordered one. 
+
+
+```{r tempo graph}
 ggplot(playlist, aes(x = track_number, y = Tempo)) +
   geom_line() +
   geom_point() +
@@ -57,6 +99,7 @@ ggplot(playlist, aes(x = track_number, y = Tempo)) +
   ) +
   theme_minimal()
 ```
+<br>
 This graph shows a few sudden spikes across the length of the playlist, although some of them can be eliminated. The first spike for example, which happens because track 7 has a tempo of 200, more than twice the tempo of the previous song. However, the song is very relaxed and I believe it can be perceived as half the speed. 
 The same case can be seen on track 72 - Lose Yourself to Dance. That is why I will divide the tempos of these songs by two. 
 
@@ -65,20 +108,18 @@ library(dplyr)
 
 playlist <- playlist %>%
   mutate(Tempo = if_else(
-    track_number %in% c(7, 72),
+    track_number %in% c(7, 62),
     Tempo / 2,
     Tempo
   ))
 
 
 playlist %>%
-  filter(track_number %in% c(7, 72)) %>%
+  filter(track_number %in% c(7, 62)) %>%
   select(track_number, Tempo)
 ```
 
 ```{r tempo graph2}
-library(ggplot2)
-
 ggplot(playlist, aes(x = track_number, y = Tempo)) +
   geom_line() +
   geom_point() +
@@ -89,20 +130,31 @@ ggplot(playlist, aes(x = track_number, y = Tempo)) +
   ) +
   theme_minimal()
 ```
-
-```{r tempo graph2}
-library(ggplot2)
-
+<br>
+```{r liveness graph2}
 ggplot(playlist, aes(x = track_number, y = Liveness)) +
   geom_line() +
   geom_point() +
   labs(
-    title = "Tempo Across Playlist Order",
+    title = "Liveness Across Playlist Order",
     x = "Playlist Position",
-    y = "Tempo"
+    y = "Liveness"
   ) +
   theme_minimal()
 ```
+<br>
+```{r energy graph}
+ggplot(playlist, aes(x = track_number, y = Energy)) +
+  geom_line() +
+  geom_point() +
+  labs(
+    title = "Energy Across Playlist Order",
+    x = "Playlist Position",
+    y = "Energy"
+  ) +
+  theme_minimal()
+```
+<br>
 
 ```{r kmeans scaling}
 features <- playlist %>%
@@ -110,18 +162,59 @@ features <- playlist %>%
 
 features_scaled <- scale(features)
 ```
-```{r kmeans}
-set.seed(123)
 
-kmeans_result <- kmeans(features_scaled, centers = 5, nstart = 25)
+```{r kmeans3}
+# 3 clusters
+set.seed(12)
+
+kmeans_result <- kmeans(features_scaled, centers = 3, nstart = 25)
 
 playlist$cluster <- kmeans_result$cluster
-
-library(ggplot2)
 
 ggplot(playlist, aes(x = track_number, y = cluster)) +
   geom_point() +
   geom_line() +
   theme_minimal()
 ```
+<br>
+```{r kmeans5}
+# 5 clusters
+set.seed(13)
 
+kmeans_result <- kmeans(features_scaled, centers = 5, nstart = 25)
+
+playlist$cluster <- kmeans_result$cluster
+
+ggplot(playlist, aes(x = track_number, y = cluster)) +
+  geom_point() +
+  geom_line() +
+  theme_minimal()
+```
+<br>
+```{r}
+# check optimal number of clusters
+
+set.seed(123)
+
+wss <- sapply(seq(1, 11, by = 2), function(k) {
+  kmeans(features_scaled, centers = k, nstart = 25)$tot.withinss
+})
+
+elbow_df <- data.frame(
+  k = seq(1, 11, by = 2),
+  wss = wss
+)
+
+ggplot(elbow_df, aes(x = k, y = wss)) +
+  geom_line() +
+  geom_point() +
+  labs(
+    title = "Elbow Method for Optimal k",
+    x = "Number of Clusters (k)",
+    y = "Within-Cluster Sum of Squares"
+  ) +
+  theme_minimal()
+
+
+```
+<br>
