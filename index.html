@@ -24,6 +24,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -120,7 +155,8 @@ It contains an analysis of a selected corpus of music from my playlist <em>“I 
 </div>
 <p><br>
 Note that the distances of subsequent points on the graph does not correspong to a bigger spike, but for each track the transition distance from the previous one is shown. This means that everywhere there is a spike, there is a large transition distance. <br> Also as the first song has none before it, it is omitted from the graph, we start with the second track.<br>
-This graph shows that when we take a couple of the track-level features, namely: energy, tempo and danceability, the following transitions are between most different songs:</p>
+This graph shows that when we take a couple of the track-level features, namely: energy, tempo and danceability.<br>
+The following songs have most different transitions:</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -168,9 +204,34 @@ This graph shows that when we take a couple of the track-level features, namely:
 </table>
 </div>
 </div>
-</section>
-<section id="tempo" class="level3">
-<h3 class="anchored" data-anchor-id="tempo">Tempo</h3>
+<p>To make sure that my ordering of the track influenced the Spotify track level features of the playlist at all, I will compare the mean multivariate distance of both my playlist and the same songs from it ordered in a random way.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>random_distances <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  shuffled <span class="ot">&lt;-</span> playlist <span class="sc">%&gt;%</span> <span class="fu">sample_frac</span>(<span class="dv">1</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  d_energy <span class="ot">&lt;-</span> <span class="fu">diff</span>(shuffled<span class="sc">$</span>Energy)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  d_valence <span class="ot">&lt;-</span> <span class="fu">diff</span>(shuffled<span class="sc">$</span>Valence)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  d_tempo  <span class="ot">&lt;-</span> <span class="fu">diff</span>(shuffled<span class="sc">$</span>Tempo)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  d_dance  <span class="ot">&lt;-</span> <span class="fu">diff</span>(shuffled<span class="sc">$</span>Danceability)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">sqrt</span>(d_energy<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> d_valence<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> d_tempo<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> d_dance<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>mean_original <span class="ot">&lt;-</span> <span class="fu">mean</span>(playlist<span class="sc">$</span>transition_distance, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># the mean multivariate distance of tracks in my playlist:</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>mean_original</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16.09116</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the eman multivariate distance of the same tracks in random order:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(random_distances)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18.72697</code></pre>
+</div>
+</div>
+<p>This shows that my ordering did indeed influence the Spotify track level features positively, as expected. The mean multivariate distance between tracks is lower in my playlist than in a randomly ordered one. We can conduct the analysis, assuming that Spotify track-level features meaningfully approximate perceptual groove similarity. ### Tempo</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
