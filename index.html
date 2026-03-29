@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Welcome</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Background</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Clustering</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Chroma Features [pitch]</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">Timbre Features</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Welcome</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Background</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Chroma Features [pitch]</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Loudness</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">Timbre Features</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false" href="">Clustering</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-7" role="tab" aria-controls="tabset-1-7" aria-selected="false" href="">Conclusion</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="columns">
@@ -302,81 +302,8 @@ This graph shows that when we take a couple of the track-level features, namely:
 </section>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/kmeans3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><br></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/kmeans5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><br></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><br> <!-- ### Select a Feature to View --></p>
-<!-- ```{r, echo=FALSE} -->
-<!-- # Functions to generate plot, table, and conclusion based on selected feature -->
-<!-- q_feature_plot <- function(feature) { -->
-<!--   if (feature == "tempo") { -->
-<!--     ggplot(playlist, aes(x = track_number, y = Tempo)) + -->
-<!--       geom_line() + geom_point() + -->
-<!--       labs(title="Tempo Across Playlist Order", x="Playlist Position", y="Tempo") + -->
-<!--       theme_minimal() -->
-<!--   } else if (feature == "liveness") { -->
-<!--     ggplot(playlist, aes(x = track_number, y = Liveness)) + -->
-<!--       geom_line() + geom_point() + -->
-<!--       labs(title="Liveness Across Playlist Order", x="Playlist Position", y="Liveness") + -->
-<!--       theme_minimal() -->
-<!--   } else if (feature == "energy") { -->
-<!--     ggplot(playlist, aes(x = track_number, y = Energy)) + -->
-<!--       geom_line() + geom_point() + -->
-<!--       labs(title="Energy Across Playlist Order", x="Playlist Position", y="Energy") + -->
-<!--       theme_minimal() -->
-<!--   } -->
-<!-- } -->
-<!-- q_feature_table <- function(feature) { -->
-<!--   if (feature == "tempo") top5_tempo_transitions -->
-<!--   else if (feature == "Liveness") top5_liveness_transitions -->
-<!--   else top5_energy_transitions -->
-<!-- } -->
-<!-- q_feature_conclusion <- function(feature) { -->
-<!--   if (feature == "tempo") "Conclusion: This shows spikes at tracks 7 and 62, etc." -->
-<!--   else if (feature == "Liveness") "Conclusion: Peaks indicate live-feel transitions." -->
-<!--   else "Conclusion: Large jumps in energy show strong contrast." -->
-<!-- } -->
-<!-- ``` -->
-<!-- ```{r, echo=FALSE} -->
-<!-- # Display plot, table, and conclusion for the selected feature -->
-<!-- q_feature_plot(feature) -->
-<!-- q_feature_table(feature) -->
-<!-- cat(q_feature_conclusion(feature)) -->
-<!-- ``` -->
-<!-- # Background -->
-<!-- ::: {.card title="Assesing the Order"} -->
-<!-- ```{r child="Untitled.Rmd", echo=FALSE, results='asis'} -->
-<!-- knitr::knit_child('Untitled.Rmd', envir = list(feature = feature)) -->
-<!-- ``` -->
-<!-- ::: -->
-</div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<section id="chromagrams" class="level2">
+<h2 class="anchored" data-anchor-id="chromagrams">Chromagrams</h2>
 <p>Here are the chroma features of the first two tracks,</p>
 <p><em>Find Your State of Mind</em> by <em>Jestofunk</em>:<br>
 <img src="fysm_chroma.png" class="img-fluid" alt="fysm chroma"><br>
@@ -393,8 +320,26 @@ And the second two,</p>
 <img src="words2BChroma.png" class="img-fluid" style="width:85.0%" alt="w2bh chroma"><br>
 </p>
 <p>Here there again isn’t overlap, however in <em>Goldrush</em> we can see that the most prominent pitches are A and D, while in <em>Words 2B Heard…</em> A flat and C sharp. This suggests that the pitch content of the second song is transposed down by a semitone relative to the first, but both might use a similar melodic structure.</p>
+</section>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<section id="loudness-volume" class="level2">
+<h2 class="anchored" data-anchor-id="loudness-volume">Loudness, volume</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Looking at the loudness between tracks, I clearly did not take that into consideration when ordering the playlist. I know that Spotify has a feature ‘volume normalization’ which I have turned on in settings, so maybe I cannot even hear the differences. Interestingly though, again in the middle seems to be the smallest variance, where the house tracks are.</p>
+</section>
 </div>
 <div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<section id="cepstrorgams" class="level2">
+<h2 class="anchored" data-anchor-id="cepstrorgams">Cepstrorgams</h2>
 <p>Here are the cepstrograms for the analysed songs:</p>
 <p><em>Find Your State of Mind</em> by <em>Jestofunk</em>:<br>
 <img src="fysm_timbre.png" class="img-fluid" alt="fysm timbre"><br>
@@ -402,7 +347,7 @@ And the second two,</p>
 <em>I’ll be With You</em> by <em>Bernie Worrell</em>:<br>
 <img src="ibwy_timbre.png" class="img-fluid" alt="ibwy timbre"><br>
 </p>
-<p>They show that the songs are played in different keys, which may contribute to their incompatibility. Although, they do share a sudden spike in the e flat pitch around three fourths of the way through the songs, interestingly.<br>
+<p>Again, there deos not seem to be much overlap, however there is a similar lacl of activity in the third coefficient around the same time in the songs. Again maybe there is a slight similarity in something there is played there.<br>
 And the second two,</p>
 <p><em>Goldrush</em> by <em>the Herbaliser</em>:<br>
 <img src="goldrush_timbre.png" class="img-fluid" alt="gr chroma"><br>
@@ -410,6 +355,50 @@ And the second two,</p>
 <em>Words 2B Heard Meets Planetary Funk Alert</em> by <em>MC Conrad</em>:<br>
 <img src="w2bh_cepst.png" class="img-fluid" style="width:85.0%" alt="w2bh chroma"><br>
 </p>
+<p>These images tell totally oppsoing stories. The second cepstrogram shows a very structured pattern, while in the first one there seems to be hardly any structure. The only similarity seems to be that the fifth feature is prominent, while the sixth one very much is not.</p>
+</section>
+</div>
+<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
+<section id="k-means-clustering" class="level2">
+<h2 class="anchored" data-anchor-id="k-means-clustering">k-means clustering</h2>
+<p>The tracks on this playlist are supposed to take the listener through different genres, while not changing it too much between tracks. If I had to, I would divide the main genres into three categories:<br>
+<strong>1. Funk,</strong><br>
+<strong>2. House/electro,</strong> and<br>
+<strong>3. Hip-Hop/R&amp;B.</strong><br>
+I think all songs on this playlist are part of one of these three genres. This is why I want to use a k-means algorithm to see how it groups the songs and if we agree on order.<br>
+<br>
+first I created an elbow graph to see the optimal number of clusters based on the track-level features of the playlist. Although the elbow is not too prominent, the best number seems to be three, which alligns with the number of genres I believe there are.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/kmeans3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I applied the algorithm and plotted the results on a graph, where every song is displayed in a continuous manner, to preserve the order of the playlist when viewing the graph.<br>
+Sudddenly, the best placement is not between tracks number 20 and 40 anymore. it is clearly near the end, where a staggering 12 subsequent songs are grouped together. In the area that was so successfull before, we have jumps between two groups only. That is still better than jumping between three groups. I have no idea what might have caused these differences in the most homgenous group yet, and will definitely explore it further when I have more time.<br>
+There is also a very good streak right at the start between from track 4 to track 16, where the run is interrupted only twice.<br>
+This means that the k-means algorithm ran on the track-level features from Spotify, agrees most with me on the Funk in my playlist, as well as the Hip-Hop/R&amp;B, while the electronic music is placed very differently. This makes sense I suppose since electronic music isn’t really a genre and the songs can vary a lot.<br>
+The algorithm performed prety well considering, but this indicates that feature-based clustering does not fully align with human-perceived groove continuity”</p>
+</section>
+</div>
+<div id="tabset-1-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-7-tab">
+<p>This study demonstrates that computational features can assist in understanding and organizing groove-based playlists, but only to a certain extent.<br>
+The reduced transition distances compared to a random baseline suggest that Spotify features are capable of capturing aspects of musical similarity relevant to ordering. However, the results from k-means clustering and feature-specific analyses reveal mismatches between computational grouping and perceived flow. These discrepancies point to important dimensions, such as harmonic context and timbre structure, that are not fully represented in track-level features.<br>
+For playlist curators, this means that while such features can be used to identify problematic transitions or general trends, effective sequencing still depends on human listening and interpretation.<br>
+<br>
+Thankfully, the conlusion is that human feeling is yet to be replaced by robots if it comes to recognising and building a solid groove :)</p>
 </div>
 </div>
 </div>
