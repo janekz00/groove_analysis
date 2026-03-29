@@ -16,6 +16,8 @@ library(ggplot2)
 ```{r load playlist}
 playlist <- read_csv("~/Desktop/UvA/computational_musicology/groove_analysis/IDWTGTEE/I_Don't_Want_This_Groove_to_Ever_End.csv")
 
+playlist <- playlist[1:(nrow(playlist) - 4), ]
+
 playlist |>
   summarise(
     mean_speechiness = mean(Speechiness),
@@ -61,6 +63,18 @@ ggplot(playlist, aes(x = track_number, y = transition_distance)) +
   geom_point() +
   theme_minimal()
 ```
+Note that the distances of subsequent points on the graph does not correspong to a bigger spike, but for each track the transition distance from the previous one is shown. This means that everywhere there is a spike, there is a large transition distance. <br>
+Also as the first song has none before it, it is omitted from the graph, we start with the second track
+
+```{r}
+top5_transitions <- playlist %>%
+  mutate(previous_track = lag(`Track Name`)) %>%
+  slice_max(order_by = transition_distance, n = 5) %>%
+  select(previous_track, `Track Name`, track_number, transition_distance)
+
+top5_transitions
+```
+
 <br>
 To be sure that my ordering of the track influenced the Spotify track level features of the playlist at all, I will compare the mean multivariate distance of both my playlist and the same songs from it ordered in a random way.
 
@@ -155,6 +169,41 @@ ggplot(playlist, aes(x = track_number, y = Energy)) +
   theme_minimal()
 ```
 <br>
+```{r}
+# Top 5 Tempo transitions
+top5_tempo_transitions <- playlist %>%
+  mutate(
+    previous_track = lag(`Track Name`),
+    tempo_diff = abs(Tempo - lag(Tempo))
+  ) %>%
+  slice_max(order_by = tempo_diff, n = 5) %>%
+  select(previous_track, `Track Name`, track_number, tempo_diff)
+
+top5_tempo_transitions
+
+# Top 5 Liveness transitions
+top5_liveness_transitions <- playlist %>%
+  mutate(
+    previous_track = lag(`Track Name`),
+    liveness_diff = abs(Liveness - lag(Liveness))
+  ) %>%
+  slice_max(order_by = liveness_diff, n = 5) %>%
+  select(previous_track, `Track Name`, track_number, liveness_diff)
+
+top5_liveness_transitions
+
+# Top 5 Energy transitions
+top5_energy_transitions <- playlist %>%
+  mutate(
+    previous_track = lag(`Track Name`),
+    energy_diff = abs(Energy - lag(Energy))
+  ) %>%
+  slice_max(order_by = energy_diff, n = 5) %>%
+  select(previous_track, `Track Name`, track_number, energy_diff)
+
+top5_energy_transitions
+```
+
 
 ```{r kmeans scaling}
 features <- playlist %>%
