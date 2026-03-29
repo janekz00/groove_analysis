@@ -9,14 +9,13 @@ editor: visual
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE)
 ```
-::: {.panel-tabset}
+
+::::::: panel-tabset
 # Welcome
 
-::: {.columns}
- 
+:::::: columns
 ::: {.column width="55%"}
-
-## Intro 
+## Intro
 
 This repository was created for the course **Computational Musicology** at the University of Amsterdam.\
 It contains an analysis of a selected corpus of music from my playlist *"I Don't Want This Groove to Ever End"*.
@@ -29,21 +28,24 @@ The tracks are mostly unique and vary greatly, and hearing a contrasting groove 
 
 ### The Analysis
 
-The goal of the conducted analysis will be to show how well some musical features can be used to determine the order of the playlist, based on the similarity of the tracks. The following musical featuers will be used:
-- like Spotify track-level features, 
-- chroma, timbre, and temporal features,
-- and volume or loudness
+The goal of the conducted analysis will be to show how well some musical features can be used to determine the order of the playlist, based on the similarity of the tracks. The following musical featuers will be used: - like Spotify track-level features, - chroma, timbre, and temporal features, - and volume or loudness
 :::
+
 ::: {.column width="5%"}
 :::
-::: {.column width="40%"}
 
+::: {.column width="40%"}
 <p style="margin-top: 0;">
+
 You can view and listen to the playlist here:
+
 </p>
-<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5R4pN6j7ogQeuaAVptvOnW?utm_source=generator&theme=0" width="100%" height="400" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5R4pN6j7ogQeuaAVptvOnW?utm_source=generator&amp;theme=0" width="100%" height="400" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+
+</iframe>
 :::
-:::
+::::::
 
 # Background
 
@@ -80,7 +82,9 @@ playlist |>
 ```{r number tracks, echo=FALSE}
 playlist$track_number <- 1:nrow(playlist)
 ```
+
 ### Mix of features
+
 After having loaded the playlist, I deleted the last four tracks from the data frame that will be analyzed, since they are not yet assigned a place in the playlist. I have then computed the transition distance across all features. This will allow me to check for spikes along the playlist length to see which moments or tracks have the least smooth transitions so that I can focus on those.\
 
 ```{r}
@@ -107,7 +111,7 @@ ggplot(playlist, aes(x = track_number, y = transition_distance)) +
 
 \
 Note that the distances of subsequent points on the graph does not correspong to a bigger spike, but for each track the transition distance from the previous one is shown. This means that everywhere there is a spike, there is a large transition distance. <br> Also as the first song has none before it, it is omitted from the graph, we start with the second track.\
-This graph shows that when we take a couple of the track-level features, namely: energy, tempo and danceability, the following transitions are between most different songs: 
+This graph shows that when we take a couple of the track-level features, namely: energy, tempo and danceability, the following transitions are between most different songs:
 
 ```{r, echo=FALSE}
 library(knitr)
@@ -119,7 +123,9 @@ top5_transitions <- playlist %>%
 
 kable(top5_transitions, format = "html", digits = 2, caption = "Top 5 Playlist Transitions")
 ```
+
 ### Tempo
+
 ```{r, include=FALSE}
 # check against randomness
 
@@ -148,7 +154,6 @@ mean(random_distances)
 # This shows that my ordering did indeed influence the Spotify track level features positively, as expected. The mean multivariate distance between tracks is lower in my playlist than in a randomly ordered one.
 
 ```
-
 
 ```{r tempo graph}
 ggplot(playlist, aes(x = track_number, y = Tempo)) +
@@ -180,7 +185,9 @@ playlist %>%
   filter(track_number %in% c(7, 62)) %>%
   select(track_number, Tempo)
 ```
+
 ### Singular Features
+
 Now that the bpm has been scaled, here are the graphs for tempo across tracks in the playlists, as well as danceability and energy.
 
 ```{r}
@@ -219,8 +226,8 @@ ggplot(playlist, aes(x = track_number, y = Energy)) +
   ) +
   theme_minimal()
 ```
-<br>
-These graphs show that seemingly the track-level features that best describe the genre across this playlist are tempo and danceability. Both parameters are most stable in the middle of the playlist between tracks 20-40 more or less. Danceability shows a slight rise and then fall, which would make sense according to how the playlist is structured, but it still has high differences between some neighbouring tracks.
+
+<br> These graphs show that seemingly the track-level features that best describe the genre across this playlist are tempo and danceability. Both parameters are most stable in the middle of the playlist between tracks 20-40 more or less. Danceability shows a slight rise and then fall, which would make sense according to how the playlist is structured, but it still has high differences between some neighbouring tracks.
 
 ```{r}
 top5_tempo_transitions <- playlist %>%
@@ -233,6 +240,7 @@ top5_tempo_transitions <- playlist %>%
 
 kable(top5_tempo_transitions, format = "html", digits = 2, caption = "Top 5 Tempo Transitions")
 ```
+
 ```{r}
 top5_danceability_transitions <- playlist %>%
   mutate(
@@ -244,12 +252,15 @@ top5_danceability_transitions <- playlist %>%
 
 kable(top5_danceability_transitions, format = "html", digits = 2, caption = "Top 5 Danceability Transitions")
 ```
+
 ### Chosen Tracks
+
 Based on this info, I decided to compare the following neighbouring songs:\
 - *Find Your State of Mind* and *I'll Be With You* (tracks 6 and 7), because the songs differ very much in the allround transition score, but not so much in the individual classifications, so I wonder how they differ from eachoter\
-- *Goldrush* and *Words 2b Heard Meets Planetary Funk Alert* (tracks 69 and 70), because they differ a lot on many aspects and I wonder if there are some features that show that I have placed them next to each other correctly. 
+- *Goldrush* and *Words 2b Heard Meets Planetary Funk Alert* (tracks 69 and 70), because they differ a lot on many aspects and I wonder if there are some features that show that I have placed them next to each other correctly.
 
 # Clustering
+
 ```{r kmeans scaling}
 features <- playlist %>%
   select(Energy, Valence, Danceability, Tempo, Acousticness)
@@ -272,7 +283,6 @@ ggplot(playlist, aes(x = track_number, y = cluster)) +
 ```
 
 <br>
-
 
 ```{r kmeans5}
 # 5 clusters
@@ -314,61 +324,133 @@ ggplot(elbow_df, aes(x = k, y = wss)) +
   theme_minimal()
 ```
 
-<br>
-<!-- ### Select a Feature to View -->
+<br> <!-- ### Select a Feature to View -->
 
 <!-- ```{r, echo=FALSE} -->
+
 <!-- # Functions to generate plot, table, and conclusion based on selected feature -->
 
 <!-- q_feature_plot <- function(feature) { -->
+
 <!--   if (feature == "tempo") { -->
+
 <!--     ggplot(playlist, aes(x = track_number, y = Tempo)) + -->
+
 <!--       geom_line() + geom_point() + -->
+
 <!--       labs(title="Tempo Across Playlist Order", x="Playlist Position", y="Tempo") + -->
+
 <!--       theme_minimal() -->
+
 <!--   } else if (feature == "liveness") { -->
+
 <!--     ggplot(playlist, aes(x = track_number, y = Liveness)) + -->
+
 <!--       geom_line() + geom_point() + -->
+
 <!--       labs(title="Liveness Across Playlist Order", x="Playlist Position", y="Liveness") + -->
+
 <!--       theme_minimal() -->
+
 <!--   } else if (feature == "energy") { -->
+
 <!--     ggplot(playlist, aes(x = track_number, y = Energy)) + -->
+
 <!--       geom_line() + geom_point() + -->
+
 <!--       labs(title="Energy Across Playlist Order", x="Playlist Position", y="Energy") + -->
+
 <!--       theme_minimal() -->
+
 <!--   } -->
+
 <!-- } -->
 
 <!-- q_feature_table <- function(feature) { -->
+
 <!--   if (feature == "tempo") top5_tempo_transitions -->
+
 <!--   else if (feature == "Liveness") top5_liveness_transitions -->
+
 <!--   else top5_energy_transitions -->
+
 <!-- } -->
 
 <!-- q_feature_conclusion <- function(feature) { -->
+
 <!--   if (feature == "tempo") "Conclusion: This shows spikes at tracks 7 and 62, etc." -->
+
 <!--   else if (feature == "Liveness") "Conclusion: Peaks indicate live-feel transitions." -->
+
 <!--   else "Conclusion: Large jumps in energy show strong contrast." -->
+
 <!-- } -->
+
 <!-- ``` -->
 
 <!-- ```{r, echo=FALSE} -->
+
 <!-- # Display plot, table, and conclusion for the selected feature -->
+
 <!-- q_feature_plot(feature) -->
+
 <!-- q_feature_table(feature) -->
+
 <!-- cat(q_feature_conclusion(feature)) -->
+
 <!-- ``` -->
-
-
 
 <!-- # Background -->
 
 <!-- ::: {.card title="Assesing the Order"} -->
+
 <!-- ```{r child="Untitled.Rmd", echo=FALSE, results='asis'} -->
+
 <!-- knitr::knit_child('Untitled.Rmd', envir = list(feature = feature)) -->
+
 <!-- ``` -->
+
 <!-- ::: -->
 
-# Chroma features [pitch]
+# Chroma Features \[pitch\]
 
-I have made these two self similarity matrices, based on chroma features in:
+Here are the chroma features of the first two tracks,
+
+*Find Your State of Mind* by *Jestofunk*:\
+![fysm chroma](fysm_chroma.png)\
+\
+*I'll be With You* by *Bernie Worrell*:\
+![ibwy chroma](ibwy_chroma.png)\
+
+They show that the songs are played in different keys, which may contribute to their incompatibility. Although, they do share a sudden spike in the e flat pitch around three fourths of the way through the songs, interestingly. 
+\
+And the second two, 
+
+*Goldrush* by *the Herbaliser*:\
+![gr chroma](goldrush_chroma.png)\
+\
+*Words 2B Heard Meets Planetary Funk Alert* by *MC Conrad*:\
+![w2bh chroma](words2BChroma.png){width="85%"}\
+
+Here there again isn't overlap, however in *Goldrush* we can see that the most prominent pitches are A and D, while in *Words 2B Heard...* A flat and C sharp. This suggests that the pitch content of the second song is transposed down by a semitone relative to the first, but both might use a similar melodic structure.
+
+
+# Timbre Features
+Here are the cepstrograms for the analysed songs:
+
+*Find Your State of Mind* by *Jestofunk*:\
+![fysm timbre](fysm_timbre.png)\
+\
+*I'll be With You* by *Bernie Worrell*:\
+![ibwy timbre](ibwy_timbre.png)\
+
+They show that the songs are played in different keys, which may contribute to their incompatibility. Although, they do share a sudden spike in the e flat pitch around three fourths of the way through the songs, interestingly. 
+\
+And the second two, 
+
+*Goldrush* by *the Herbaliser*:\
+![gr chroma](goldrush_timbre.png)\
+\
+*Words 2B Heard Meets Planetary Funk Alert* by *MC Conrad*:\
+![w2bh chroma](w2bh_cepst.png){width="85%"}\
+:::::::
