@@ -261,20 +261,20 @@ Based on this info, I decided to compare the following neighbouring songs:\
 Here are the chroma features of the first two tracks,
 
 *Find Your State of Mind* by *Jestofunk*:\
-![fysm chroma](fysm_chroma.png)\
+![fysm chroma](media/fysm_chroma.png)\
 \
 *I'll be With You* by *Bernie Worrell*:\
-![ibwy chroma](ibwy_chroma.png)\
+![ibwy chroma](media/ibwy_chroma.png)\
 
 They show that the songs are played in different keys, which may contribute to their incompatibility. Although, they do share a sudden spike in the e flat pitch around three fourths of the way through the songs, interestingly. 
 \
 And the second two, 
 
 *Goldrush* by *the Herbaliser*:\
-![gr chroma](goldrush_chroma.png)\
+![gr chroma](media/goldrush_chroma.png)\
 \
 *Words 2B Heard Meets Planetary Funk Alert* by *MC Conrad*:\
-![w2bh chroma](words2BChroma.png){width="85%"}\
+![w2bh chroma](media/words2BChroma.png){width="85%"}\
 
 Here there again isn't overlap, however in *Goldrush* we can see that the most prominent pitches are A and D, while in *Words 2B Heard...* A flat and C sharp. This suggests that the pitch content of the second song is transposed down by a semitone relative to the first, but both might use a similar melodic structure.
 
@@ -299,20 +299,20 @@ Looking at the loudness between tracks, I clearly did not take that into conside
 Here are the cepstrograms for the analysed songs:
 
 *Find Your State of Mind* by *Jestofunk*:\
-![fysm timbre](fysm_timbre.png)\
+![fysm timbre](media/fysm_timbre.png)\
 \
 *I'll be With You* by *Bernie Worrell*:\
-![ibwy timbre](ibwy_timbre.png)\
+![ibwy timbre](media/ibwy_timbre.png)\
 
 Again, there deos not seem to be much overlap, however there is a similar lacl of activity in the third coefficient around the same time in the songs. Again maybe there is a slight similarity in something there is played there. 
 \
 And the second two, 
 
 *Goldrush* by *the Herbaliser*:\
-![gr chroma](goldrush_timbre.png)\
+![gr chroma](media/goldrush_timbre.png)\
 \
 *Words 2B Heard Meets Planetary Funk Alert* by *MC Conrad*:\
-![w2bh chroma](w2bh_cepst.png){width="85%"}\
+![w2bh chroma](media/w2bh_cepst.png){width="85%"}\
 
 These images tell totally oppsoing stories. The second cepstrogram shows a very structured pattern, while in the first one there seems to be hardly any structure. The only similarity seems to be that the fifth feature is prominent, while the sixth one very much is not. 
 
