@@ -1,8 +1,9 @@
 ---
 title: "Groove Analysis"
 author: "Janek Z"
-format: html
-theme: quartz
+format: 
+  html:
+    theme: quartz
 editor: visual
 ---
 
